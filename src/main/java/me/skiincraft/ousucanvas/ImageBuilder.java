@@ -67,7 +67,7 @@ public class ImageBuilder implements Element {
     }
 
     public ImageBuilder drawRect(Dimension size, ElementAlignment alignment, boolean fill, int x, int y) {
-        ShapeElement<Rectangle> rectangle = new ShapeElement<>(new Rectangle(size.height, size.width));
+        ShapeElement<Rectangle> rectangle = new ShapeElement<>(new Rectangle((int) size.getWidth(), (int) size.getHeight()));
         rectangle.setFill(fill);
         getElements().add(new ElementContainer(rectangle, alignment, x, y));
         return this;
@@ -130,15 +130,15 @@ public class ImageBuilder implements Element {
         Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (backgroundColor != null) {
-            ShapeElement<Rectangle> rectangle = new ShapeElement<>(new Rectangle(getHeight(), getWidth()));
+            ShapeElement<Rectangle> rectangle = new ShapeElement<>(new Rectangle(getWidth(), getHeight()));
             rectangle.setFill(true);
             rectangle.setColor(backgroundColor);
-            applyElement(graphics2D, new ElementContainer(rectangle, ElementAlignment.CENTER, getHeight()/2, getWidth()/2));
+            applyElement(graphics2D, new ElementContainer(rectangle, ElementAlignment.CENTER, getWidth()/2, getHeight()/2));
         }
         graphics2D.setColor(Color.BLACK);
 
         if (background != null){
-            applyElement(graphics2D, new ElementContainer(background, ElementAlignment.CENTER, getHeight()/2, getWidth()/2));
+            applyElement(graphics2D, new ElementContainer(background, ElementAlignment.CENTER, getWidth()/2, getHeight()/2));
         }
 
         applyElements(graphics2D);
