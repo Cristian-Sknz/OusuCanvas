@@ -95,6 +95,10 @@ public class TextAreaElement implements Element {
         this.font = font;
     }
 
+    public void setOrientation(TextOrientation orientation) {
+        this.orientation = orientation;
+    }
+
     public void setColor(Color color) {
         this.color = color;
     }
