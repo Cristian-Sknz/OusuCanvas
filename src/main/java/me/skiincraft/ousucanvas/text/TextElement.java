@@ -76,8 +76,9 @@ public class TextElement implements Element {
     }
 
     public void setText(String string) {
-        if (text.length() != 0)
-            text.delete(0, text.length()-1);
+        if (text.length() != 0) {
+            text.delete(0, text.length());
+        }
         text.append(string);
     }
 

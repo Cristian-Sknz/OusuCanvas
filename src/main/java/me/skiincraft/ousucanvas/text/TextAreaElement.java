@@ -99,6 +99,18 @@ public class TextAreaElement implements Element {
         this.orientation = orientation;
     }
 
+    public void setText(String string) {
+        if (text.length() != 0) {
+            text.delete(0, text.length());
+        }
+        text.append(string);
+    }
+
+    public TextAreaElement appendText(String string){
+        text.append(string);
+        return this;
+    }
+
     public void setColor(Color color) {
         this.color = color;
     }
