@@ -131,10 +131,13 @@ public interface Element {
 
     default BufferedImage toImage() {
         BufferedImage image = new BufferedImage(getWidth(), getHeight(), getType());
-        Graphics2D graphics2D = (Graphics2D) image.getGraphics().create();
+        draw((Graphics2D) image.getGraphics().create());
+        
+        return image;
+    }
+
+    default void draw(Graphics2D graphics2D){
         graphics2D.setComposite(AlphaComposite.Clear);
         graphics2D.fillRect(0, 0, getWidth(), getHeight());
-
-        return image;
     }
 }

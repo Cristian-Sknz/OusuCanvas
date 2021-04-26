@@ -146,8 +146,14 @@ public class TextAreaElement implements Element {
     @Override
     public BufferedImage toImage() {
         BufferedImage bufferedImage = Element.super.toImage();
-        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
         adjustTextBox();
+        draw((Graphics2D) bufferedImage.getGraphics());
+
+        return bufferedImage;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         graphics2D.setColor(color);
         graphics2D.setFont(font);
         graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -169,8 +175,6 @@ public class TextAreaElement implements Element {
             y += fm.getAscent() + fit(width,space * 3);
         }
         graphics2D.dispose();
-
-        return bufferedImage;
     }
 
     @Override

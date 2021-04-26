@@ -127,7 +127,13 @@ public class ImageBuilder implements Element {
     @Override
     public BufferedImage toImage() {
         BufferedImage bufferedImage = Element.super.toImage();
-        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+        draw((Graphics2D) bufferedImage.getGraphics());
+
+        return bufferedImage;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (backgroundColor != null) {
             ShapeElement<Rectangle> rectangle = new ShapeElement<>(new Rectangle(getWidth(), getHeight()));
@@ -143,8 +149,6 @@ public class ImageBuilder implements Element {
 
         applyElements(graphics2D);
         graphics2D.dispose();
-
-        return bufferedImage;
     }
 
     @Override

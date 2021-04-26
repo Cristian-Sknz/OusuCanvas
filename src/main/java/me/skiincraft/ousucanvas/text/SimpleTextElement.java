@@ -101,10 +101,14 @@ public class SimpleTextElement implements Element {
     @Override
     public BufferedImage toImage() {
         BufferedImage bufferedImage = Element.super.toImage();
-        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+        draw(((Graphics2D) bufferedImage.getGraphics()));
+        return bufferedImage;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         graphics2D.setColor(color);
         graphics2D.setFont(font);
-
         if (orientation == TextOrientation.LEFT) {
             drawLeftString(graphics2D, graphics2D.getFontMetrics(), text.toString(), 0, getHeight()/2);
         }
@@ -115,8 +119,6 @@ public class SimpleTextElement implements Element {
             drawRightString(graphics2D, graphics2D.getFontMetrics(), text.toString(), getWidth(), getHeight()/2);
         }
         applyElements(graphics2D);
-
         graphics2D.dispose();
-        return bufferedImage;
     }
 }

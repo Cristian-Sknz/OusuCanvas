@@ -70,7 +70,12 @@ public class ImageElement implements Element {
     @Override
     public BufferedImage toImage() {
         BufferedImage bufferedImage = Element.super.toImage();
-        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+        draw((Graphics2D) bufferedImage.getGraphics());
+        return bufferedImage;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         if (backgroundColor != null) {
             graphics2D.setColor(backgroundColor);
             graphics2D.fillRect(0, 0, width, height);
@@ -79,6 +84,5 @@ public class ImageElement implements Element {
         graphics2D.drawImage(image, 0,0, width, height,null);
         applyElements(graphics2D);
         graphics2D.dispose();
-        return bufferedImage;
     }
 }

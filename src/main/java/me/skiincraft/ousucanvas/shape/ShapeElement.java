@@ -60,7 +60,13 @@ public class ShapeElement<T extends Shape> implements GenericElement<T> {
     @Override
     public BufferedImage toImage() {
         BufferedImage bufferedImage = GenericElement.super.toImage();
-        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+        draw((Graphics2D) bufferedImage.getGraphics());
+
+        return bufferedImage;
+    }
+
+    @Override
+    public void draw(Graphics2D graphics2D) {
         graphics2D.setColor(color);
         graphics2D.draw(getGeneric());
         if (isFill()){
@@ -68,6 +74,5 @@ public class ShapeElement<T extends Shape> implements GenericElement<T> {
         }
         applyElements(graphics2D);
         graphics2D.dispose();
-        return bufferedImage;
     }
 }
