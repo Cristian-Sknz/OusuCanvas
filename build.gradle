@@ -2,14 +2,24 @@ plugins {
     id 'java-library'
 }
 
-repositories {
-    jcenter()
-}
 compileJava.options.encoding = 'UTF-8'
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-dependencies {
+repositories {
+    jcenter()
 }
+
+group('me.skiincraft')
+version('2021.0426.0')
+
+dependencies {
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+    useJUnitPlatform()
+}
+
