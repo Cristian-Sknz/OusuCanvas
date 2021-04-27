@@ -7,18 +7,10 @@ public class ElementContainer {
     private Element element;
     private int x;
     private int y;
-    private int width = -1;
-    private int height = -1;
+    private int width;
+    private int height;
 
-    private ElementAlignment alignment = ElementAlignment.LEFT;
-
-    public ElementContainer(Element element, Dimension size, int x, int y) {
-        this.element = element;
-        this.width = (int) size.getWidth();
-        this.height = (int) size.getHeight();
-        this.x = x;
-        this.y = y;
-    }
+    private ElementAlignment alignment;
 
     public ElementContainer(Element element, Dimension size, ElementAlignment alignment, int x, int y) {
         this.element = element;
@@ -29,17 +21,16 @@ public class ElementContainer {
         this.y = y;
     }
 
-    public ElementContainer(Element element, int x, int y) {
-        this.element = element;
-        this.x = x;
-        this.y = y;
+    public ElementContainer(Element element, ElementAlignment alignment, int x, int y) {
+        this(element, new Dimension(element.getWidth(), element.getHeight()), alignment, x, y);
     }
 
-    public ElementContainer(Element element, ElementAlignment alignment, int x, int y) {
-        this.element = element;
-        this.alignment = alignment;
-        this.x = x;
-        this.y = y;
+    public ElementContainer(Element element, Dimension size, int x, int y) {
+        this(element, size, ElementAlignment.LEFT, x, y);
+    }
+
+    public ElementContainer(Element element, int x, int y) {
+        this(element, new Dimension(element.getWidth(), element.getHeight()), ElementAlignment.LEFT, x, y);
     }
 
     public ElementAlignment getAlignment() {
