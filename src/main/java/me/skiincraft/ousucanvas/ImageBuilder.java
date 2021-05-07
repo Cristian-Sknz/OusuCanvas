@@ -40,8 +40,7 @@ public class ImageBuilder implements Element {
             elementList.add(new ElementContainer(text, alignment, x, y));
             return this;
         }
-        SimpleTextElement text = new SimpleTextElement(string, font, textOrientation);
-        text.setColor(color);
+        SimpleTextElement text = new SimpleTextElement(string, font, color);
         elementList.add(new ElementContainer(text, alignment, x, y));
         return this;
     }

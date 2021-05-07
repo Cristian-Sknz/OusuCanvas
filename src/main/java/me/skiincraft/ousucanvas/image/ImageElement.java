@@ -3,7 +3,12 @@ package me.skiincraft.ousucanvas.image;
 import me.skiincraft.ousucanvas.elements.Element;
 import me.skiincraft.ousucanvas.elements.ElementContainer;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.image.BufferedImage;
@@ -20,9 +25,21 @@ public class ImageElement implements Element {
     private List<ElementContainer> elementList = new ArrayList<>();
 
     public ImageElement(Image image) {
-        this.image = image;
+        this(image, image.getWidth(null), image.getHeight(null));
+    }
+
+    public ImageElement(String url) throws IOException {
+        this.image = ImageIO.read(new URL(url));
         this.width = image.getWidth(null);
         this.height = image.getHeight(null);
+    }
+
+    public ImageElement(Image image, Dimension size) {
+        this(image, size.width, size.height);
+    }
+
+    public ImageElement(String url, Dimension size) throws IOException {
+        this(url, size.width, size.height);
     }
 
     public ImageElement(Image image, int width, int height) {
@@ -31,10 +48,10 @@ public class ImageElement implements Element {
         this.height = height;
     }
 
-    public ImageElement(Image image, Dimension size) {
-        this.image = image;
-        this.width = size.width;
-        this.height = size.height;
+    public ImageElement(String url, int width, int height) throws IOException {
+        this.image = ImageIO.read(new URL(url));
+        this.width = width;
+        this.height = height;
     }
 
     @Override

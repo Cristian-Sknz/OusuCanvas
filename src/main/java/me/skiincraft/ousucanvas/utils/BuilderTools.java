@@ -8,15 +8,19 @@ import java.awt.*;
 
 public class BuilderTools {
 
-    private Font font = new Font("Arial", Font.PLAIN, 12);
-    private TextOrientation textOrientation = TextOrientation.LEFT;
-    private ElementAlignment elementAlignment = ElementAlignment.BOTTOM_LEFT;
-    private Color color = Color.WHITE;
+    private Font font;
+    private TextOrientation textOrientation;
+    private ElementAlignment elementAlignment;
+    private Color color;
 
     private final ImageBuilder imageBuilder;
 
     public BuilderTools(ImageBuilder imageBuilder) {
         this.imageBuilder = imageBuilder;
+        this.font = new Font("Arial", Font.PLAIN, 12);
+        this.textOrientation = TextOrientation.LEFT;
+        this.elementAlignment = ElementAlignment.BOTTOM_LEFT;
+        this.color = Color.WHITE;
     }
 
     public TextOrientation getTextOrientation() {
