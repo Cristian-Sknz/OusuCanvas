@@ -5,13 +5,11 @@ import me.skiincraft.ousucanvas.elements.ElementContainer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.image.BufferedImage;
 
 public class ImageElement implements Element {
 

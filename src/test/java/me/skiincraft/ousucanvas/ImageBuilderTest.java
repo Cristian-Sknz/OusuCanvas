@@ -8,10 +8,8 @@ import me.skiincraft.ousucanvas.text.TextOrientation;
 import me.skiincraft.ousucanvas.text.WrapTextElement;
 import org.junit.jupiter.api.Test;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class ImageBuilderTest {
